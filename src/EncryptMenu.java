@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -52,6 +53,8 @@ public class EncryptMenu {
             frame.pack();
             frame.setVisible(true);
             panelExists = true;
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         }
     }
 
