@@ -6,8 +6,8 @@ public class MainMenu {
     private JPanel choicePanel;
     private JButton encryptButton;
     private JButton decryptButton;
-    private EncryptMenu encrypt;
-    private DecryptMenu decrypt;
+    private static EncryptMenu encrypt;
+    private static DecryptMenu decrypt;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Main Menu");
@@ -15,13 +15,14 @@ public class MainMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        encrypt = new EncryptMenu();
+        decrypt = new DecryptMenu();
     }
 
     public MainMenu() {
         encryptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                encrypt = new EncryptMenu();
                 encrypt.createEncryptPanel();
             }
         });
@@ -29,7 +30,6 @@ public class MainMenu {
         decryptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                decrypt = new DecryptMenu();
                 decrypt.createDecryptPanel();
             }
         });
