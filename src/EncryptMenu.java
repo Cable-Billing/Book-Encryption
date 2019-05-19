@@ -1,19 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class EncryptMenu {
     private JPanel encryptPanel;
     private JTextArea unencryptedMessageArea;
     private JButton encryptButton;
     private JLabel encryptedMessage;
+    private JButton copyToClipboardButton;
     private boolean panelExists;
 
     public EncryptMenu() {
@@ -31,6 +35,24 @@ public class EncryptMenu {
                 } else {
                     encryptedMessage.setText("There is no message to encrypt");
                 }
+            }
+        });
+
+        copyToClipboardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StringSelection selection = new StringSelection(encryptedMessage.getText());
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(selection, null);
+                copyToClipboardButton.setText("Copied!");
+                new Timer().schedule(
+                        new TimerTask() {
+                            @Override
+                            public void run() {
+                                copyToClipboardButton.setText("Copy to Clipboard");
+                            }
+                        }, 2000
+                );
             }
         });
     }
