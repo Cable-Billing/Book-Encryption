@@ -74,7 +74,7 @@ public class EncryptMenu {
         for (String word : wordArray) {
             // The text file to search through
             // A new scanner must be create every time to start from the start of the file again.
-            Scanner reader = new Scanner(new File("../resources/book.txt"));
+            Scanner reader = new Scanner(new File("./book.txt"));
             // Search through the file line by line
             lineCount = 0;
             readLine:
