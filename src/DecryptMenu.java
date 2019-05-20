@@ -5,7 +5,7 @@ public class DecryptMenu {
     private JPanel decryptPanel;
 
     public void createDecryptPanel() {
-        JFrame frame = new JFrame("Encrypt Menu");
+        JFrame frame = new JFrame("Decrypt Menu");
         frame.setContentPane(new DecryptMenu().decryptPanel);
         frame.pack();
         frame.setVisible(true);
